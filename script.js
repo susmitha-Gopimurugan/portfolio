@@ -144,10 +144,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Project cards tilt effect
+// ✅ FIXED Project cards tilt effect (LINKS NOW WORK)
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.project-card').forEach(card => {
+
         card.addEventListener('mousemove', e => {
+
+            // 🔑 allow clicks on links
+            if (e.target.closest('.project-link')) return;
+
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
@@ -155,12 +160,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const rotateX = (y - rect.height / 2) / 10;
             const rotateY = (rect.width / 2 - x) / 10;
 
-            card.style.transform = 
+            card.style.transform =
                 `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
         });
 
         card.addEventListener('mouseleave', () => {
-            card.style.transform = 
+            card.style.transform =
                 'perspective(1000px) rotateX(0) rotateY(0)';
         });
     });

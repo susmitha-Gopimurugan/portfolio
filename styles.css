@@ -810,3 +810,18 @@ section {
 section {
     scroll-margin-top: 80px;
 }
+
+
+/* FIX: Make project links clickable */
+.project-card {
+    position: relative;
+}
+
+.project-links {
+    position: relative;
+    z-index: 5;
+}
+
+.project-link {
+    pointer-events: auto;
+}
